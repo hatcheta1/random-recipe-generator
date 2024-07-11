@@ -1,23 +1,28 @@
 <h1>What would you like to generate a recipe for?</h1>
 
-<form action="/:type_of_recipe">
+<form action="/generate_recipe">
   <div>
-    <input id="breakfast_recipe" type="radio" name="breakfast">
+    <input id="breakfast_recipe" type="radio" name="type_of_recipe" value="breakfast">
     <label for="breakfast_recipe">Breakfast</label>
   </div>
 
   <div>
-    <input id="starer_recipe" type="radio" name="starter">
-    <label for="starer_recipe">Starter</label>
+    <input id="starter_recipe" type="radio" name="type_of_recipe" value="starter">
+    <label for="starter_recipe">Starter</label>
   </div>
 
   <div>
-    <input id="other_recipe" type="radio" name="other_meals">
-    <label for="other_recipe">Lunch or Dinner</label>
+    <input id="entree_recipe" type="radio" name="type_of_recipe" value="entrée">
+    <label for="entree_recipe">Entrée</label>
+  </div>
+
+    <div>
+    <input id="side_recipe" type="radio" name="type_of_recipe" value="side">
+    <label for="side_recipe">Side</label>
   </div>
 
   <div>
-    <input id="dessert_recipe" type="radio" name="dessert">
+    <input id="dessert_recipe" type="radio" name="type_of_recipe" value="dessert">
     <label for="dessert_recipe">Dessert</label>
   </div>
 
