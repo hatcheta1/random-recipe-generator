@@ -33,8 +33,17 @@ get("/generate_recipe") do
   parsed_data_meal = JSON.parse(raw_response_meal)
   @meal_info = parsed_data_meal.fetch("meals").at(0)
 
+  # Access the name of the recipe
+  @recipe_name = @meal_info.fetch("strMeal")
+
   # Access the recipe's photo
   @photo = @meal_info.fetch("strImageSource")
+  @video = @meal_info.fetch("strYoutube")
+
+  #Access the recipe's category & area
+  @category = @meal_info.fetch("strCategory")
+  @area = @meal_info.fetch("strArea")
+  @original_source = @meal_info.fetch("strSource")
   
   # Access a list of the recipe's ingredients
   ingredients = []
@@ -51,9 +60,6 @@ get("/generate_recipe") do
 
   # Access the recipe's instructions
   @instructions = @meal_info.fetch("strInstructions")
-
-  # Access the recipe's original source
-  @source = @meal_info.fetch("strSource")
 
   erb(:recipe_page)
 end

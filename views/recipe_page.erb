@@ -1,9 +1,8 @@
 <h1>Here is your <%= @type_of_recipe %> recipe!<h1>
 
-<%= @meal_info %>
-<% if @photo %>
-    <img src="<%= @photo %>" alt="Recipe Image">
-<% end %>
+<h2><%= @recipe_name %></h2>
+<p>Category: <%= @category %></p>
+<p>Area: <%= @area %></p>
 
 <dl>
   <dt>Ingredients</dt>
