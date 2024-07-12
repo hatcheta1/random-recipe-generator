@@ -19,40 +19,49 @@
   }
 
   .link:hover {
-    background-color: darkblue; /* Optional: Change color on hover */
+    background-color: darkblue;
   }
 
+  .name {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+  }
 </style>
 
 <a href="/">Home</a>
 
 <h2>Here is your <%= @type_of_recipe %> recipe!</h2>
 
-<h1><%= @recipe_name %></h1>
-
-<div class="image">
-  <% if @photo %>
-    <img src="<%= @photo %>" alt="Recipe Image"/>
-  <% end %>
+<div class="name">
+  <h1><%= @recipe_name %></h1>
 </div>
 
+
+<% if @photo %>
+  <div class="image">
+    <img src="<%= @photo %>" alt="Recipe Image"/>
+  </div>
+<% end %>
+
+
 <h5>Category: <%= @category %></h5>
-<h5>Area: <%= @area %></h5>
+<h5>Cuisine: <%= @area %></h5>
 
 <div class="subtitle">
 <h3>Ingredients</h3>
-</div>
-  <ul>
-    <% @ingredients.each do |ingredient| %>
-      <li><%= ingredient %></li>
-    <% end %>
-  </ul>
+  </div>
+    <ul>
+      <% @ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
 
 <div class="subtitle">
-<h3>Instructions</h3>
+  <h3>Instructions</h3>
 </div>
   <p><%= @instructions %></p>
 
 <div class="link">
-<a href="/generate_recipe?type_of_recipe=<%= @type_of_recipe %>" style="color: white; text-decoration: none;">Click here to generate a new <%= @type_of_recipe %> recipe!</a>
+  <a href="/generate_recipe?type_of_recipe=<%= @type_of_recipe %>" style="color: white; text-decoration: none;">Click here to generate a new <%= @type_of_recipe %> recipe!</a>
 </div>
