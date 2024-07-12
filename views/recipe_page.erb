@@ -1,15 +1,24 @@
-<h1>Here is your <%= @type_of_recipe %> recipe!<h1>
+<a href="/">Home</a>
 
-<h2><%= @recipe_name %></h2>
-<p>Category: <%= @category %></p>
-<p>Area: <%= @area %></p>
+<h2>Here is your <%= @type_of_recipe %> recipe!</h2>
 
-<dl>
-  <dt>Ingredients</dt>
+<h1><%= @recipe_name %></h1>
+
+<% if @photo %>
+  <img src="<%= @photo %>" alt="Recipe Image"/>
+<% end %>
+
+<h5>Category: <%= @category %></h5>
+<h5>Area: <%= @area %></h5>
+
+<h3>Ingredients</h3>
+  <ul>
     <% @ingredients.each do |ingredient| %>
-      <dd><%= ingredient %></dd>
+      <li><%= ingredient %></li>
     <% end %>
+  </ul>
 
-  <dt>Instructions</dt>
-  <dd><%= @instructions %></dd>
-</dl>
+<h3>Instructions</h3>
+  <p><%= @instructions %></p>
+
+<a href="/generate_recipe?type_of_recipe=<%= @type_of_recipe %>">Generate a new <%= @type_of_recipe %> recipe!</a>

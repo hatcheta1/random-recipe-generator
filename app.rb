@@ -37,7 +37,7 @@ get("/generate_recipe") do
   @recipe_name = @meal_info.fetch("strMeal")
 
   # Access the recipe's photo
-  @photo = @meal_info.fetch("strImageSource")
+  @photo = @meal_info.fetch("strMealThumb")
   @video = @meal_info.fetch("strYoutube")
 
   #Access the recipe's category & area
