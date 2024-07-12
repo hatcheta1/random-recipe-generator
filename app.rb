@@ -20,6 +20,7 @@ get("/generate_recipe") do
     entree_url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=#{@type_of_recipe.capitalize}"
   end
   
+  # Acess the informtion from the URL
   raw_response_category = HTTP.get(entree_url).to_s
   parsed_data_category = JSON.parse(raw_response_category)
   
@@ -32,10 +33,27 @@ get("/generate_recipe") do
   parsed_data_meal = JSON.parse(raw_response_meal)
   @meal_info = parsed_data_meal.fetch("meals").at(0)
 
+  # Access the recipe's photo
+  @photo = @meal_info.fetch("strImageSource")
+  
+  # Access a list of the recipe's ingredients
+  ingredients = []
+
+  (1..20).each do |num|
+    ingredient = @meal_info.fetch("strIngredient#{num}")
+    measurement = @meal_info.fetch("strMeasure#{num}")
+    break if ingredient.strip.empty? || ingredient.nil?
+
+    ingredients.push("#{measurement} #{ingredient}")
+  end
+
+  @ingredients = ingredients
+
+  # Access the recipe's instructions
   @instructions = @meal_info.fetch("strInstructions")
 
-  @ingredients = []
-  @measurements = []
+  # Access the recipe's original source
+  @source = @meal_info.fetch("strSource")
 
   erb(:recipe_page)
 end
